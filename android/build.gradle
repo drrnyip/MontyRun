@@ -16,7 +16,7 @@ android {
     }
     defaultConfig {
         applicationId "com.whixpyl.montyrun"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 23
     }
 }
@@ -123,4 +123,11 @@ idea {
             }
         }
     }
+}
+
+
+apply plugin: 'com.google.gms.google-services'
+
+dependencies{
+    compile 'com.google.firebase:firebase-ads:9.0.0'
 }

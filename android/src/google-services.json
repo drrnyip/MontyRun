@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "239627571036",
+    "firebase_url": "https://montyrun2.firebaseio.com",
+    "project_id": "montyrun2",
+    "storage_bucket": "montyrun2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239627571036:android:21bffe7f72e7a6c9",
+        "android_client_info": {
+          "package_name": "com.whixpyl.montyrun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239627571036-p9lhv4r0r93lutopsvg630umavbmgd7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv1H0-dwAvhfd2JGAYWWrzO7p_DKGDwOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

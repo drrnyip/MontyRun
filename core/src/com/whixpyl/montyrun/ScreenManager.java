@@ -31,14 +31,16 @@ public class ScreenManager implements Screen {
         else if (to == 2){
             game.setScreen(new PlayAgain(game, distance, adNumber));
         }
-        else if (to == 0){
-            game.setScreen(new MainMenu(game));
-        }
+
 
     }
 
     @Override
     public void render(float delta) {
+
+        if (to == 0){
+            game.setScreen(new MainMenu(game));
+        }
 
 
     }

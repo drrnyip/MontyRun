@@ -11,6 +11,7 @@ public class MontyRun extends Game {
 	SpriteBatch batch;
 	public static final int V_WIDTH = 1280;
 	public static final int V_HEIGHT = 720;
+
 	
 	@Override
 	public void create () {

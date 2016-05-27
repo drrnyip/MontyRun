@@ -84,11 +84,15 @@ public class MainMenu implements Screen {
 
     @Override
     public void hide() {
+        dispose();
 
     }
 
     @Override
     public void dispose() {
+        background.dispose();
+        playBtn.dispose();
+        start.dispose();
 
     }
 }
