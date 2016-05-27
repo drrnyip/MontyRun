@@ -1,6 +1,8 @@
 package com.whixpyl.montyrun;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
@@ -13,6 +15,8 @@ public class AndroidLauncher extends AndroidApplication {
 
 	InterstitialAd mInterstitialAd;
 	AdRequest adRequest;
+	private View view;
+	private RelativeLayout layout;
 
 
 	@Override
@@ -21,6 +25,13 @@ public class AndroidLauncher extends AndroidApplication {
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		config.useAccelerometer = false;
 		config.useCompass = false;
+
+		//View
+		view = new View(this);
+		view = initializeForView(new MontyRun(),config);
+		layout = new RelativeLayout(this);
+		layout.addView(view);
+		setContentView(layout);
 
 		//Interstitial ad
 		mInterstitialAd = new InterstitialAd(this);
@@ -31,17 +42,16 @@ public class AndroidLauncher extends AndroidApplication {
 				requestNewInterstitial();
 //				beginPlayingGame();
 			}
+
+			@Override
+			public void onAdLoaded() {
+				if (mInterstitialAd.isLoaded()) {
+					mInterstitialAd.show();
+				}
+			}
 		});
 		requestNewInterstitial();
-		initialize(new MontyRun(), config);
 
-
-		if (mInterstitialAd.isLoading()) {
-			System.err.println("Loading ad");
-		}
-		else {
-			mInterstitialAd.show();
-		}
 	}
 
 	private void requestNewInterstitial() {
