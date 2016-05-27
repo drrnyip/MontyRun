@@ -22,6 +22,7 @@ public class PlayScreen implements Screen{
 
     private MontyRun game;
     private int adNumber;
+    private int adCallTime = 7;
 
     private OrthographicCamera gamecam;
     private Viewport gamePort;
@@ -61,9 +62,15 @@ public class PlayScreen implements Screen{
     private int num_bats = 5;
     private int countBat;
 
+    //Adcaller
+    AdCall adCaller;
 
 
-    public PlayScreen(MontyRun game, int adNumber){
+
+    public PlayScreen(MontyRun game, int adNumber, AdCall adCaller){
+
+        this.adCaller = adCaller;
+
         this.game = game;
         this.adNumber = adNumber + 1;
 
@@ -160,14 +167,14 @@ public class PlayScreen implements Screen{
             }
             if (snake.collides(alien.getBounds()) == true){
                 end.play();
-                if (adNumber < 5) {
-                    game.setScreen(new ScreenManager(game, 2, distance, adNumber));
+                if (adNumber <= adCallTime) {
+                    game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
                     dispose();
 
                 }
                 else {
                     adNumber = 0;
-                    game.setScreen(new ScreenManager(game, 2, distance, adNumber));
+                    game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
                     dispose();
 
                 }
@@ -185,14 +192,14 @@ public class PlayScreen implements Screen{
             if (bat.collides(alien.getBounds()) == true){
                 end.play();
 
-                if (adNumber < 5) {
-                    game.setScreen(new ScreenManager(game, 2, distance, adNumber));
+                if (adNumber <= adCallTime) {
+                    game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
                     dispose();
 
                 }
                 else {
                     adNumber = 0;
-                    game.setScreen(new ScreenManager(game, 2, distance, adNumber));
+                    game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
                     dispose();
 
                 }

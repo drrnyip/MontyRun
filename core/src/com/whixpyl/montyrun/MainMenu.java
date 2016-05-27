@@ -18,9 +18,12 @@ public class MainMenu implements Screen {
     private Texture background;
     private Texture title;
     private Music music;
-    private Sound start;
 
-    public MainMenu(MontyRun game){
+    //Adcaller
+    AdCall adCaller;
+
+    public MainMenu(MontyRun game, AdCall adCaller){
+        this.adCaller = adCaller;
         this.game = game;
         gamecam = new OrthographicCamera();
         gamecam.setToOrtho(false, game.V_WIDTH , game.V_HEIGHT);
@@ -34,7 +37,6 @@ public class MainMenu implements Screen {
         gamecam.update();
         playBtn = new Texture("play_small.png");
         background = new Texture("bg4.png");
-        start = Gdx.audio.newSound(Gdx.files.internal("jingles_PIZZA10.ogg"));
         music = Gdx.audio.newMusic(Gdx.files.internal("good_day_to_shop.mp3"));
         title = new Texture("montyRun2.png");
 
@@ -59,8 +61,7 @@ public class MainMenu implements Screen {
 //            camera.unproject(tmp);
             Rectangle textureBounds = new Rectangle((game.V_WIDTH / 2 - playBtn.getWidth() / 2), (game.V_HEIGHT / 2 - playBtn.getHeight() / 2), playBtn.getWidth(), playBtn.getHeight());
             if (textureBounds.contains(tmp.x, tmp.y)) {
-                start.play();
-                game.setScreen(new ScreenManager(game, 1, -1, -1));
+                game.setScreen(new ScreenManager(game, 1, -1, -1, adCaller));
                 dispose();
             }
         }
@@ -92,7 +93,6 @@ public class MainMenu implements Screen {
     public void dispose() {
         background.dispose();
         playBtn.dispose();
-        start.dispose();
 
     }
 }

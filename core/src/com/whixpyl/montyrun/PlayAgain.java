@@ -38,8 +38,12 @@ public class PlayAgain implements Screen {
 
     private OrthographicCamera gamecam;
 
+    //Adcaller
+    AdCall adCaller;
 
-    public PlayAgain(MontyRun game, int distance, int adNumber){
+
+    public PlayAgain(MontyRun game, int distance, int adNumber, AdCall adCaller){
+        this.adCaller = adCaller;
         this.game = game;
         if (adNumber != -1){
             this.adNumber = adNumber;
@@ -107,7 +111,7 @@ public class PlayAgain implements Screen {
                 Rectangle textureBounds = new Rectangle((game.V_WIDTH / 2 - playBtn.getWidth() / 2), (game.V_HEIGHT / 2 - playBtn.getHeight() / 2), playBtn.getWidth(), playBtn.getHeight());
                 if (textureBounds.contains(tmp.x, tmp.y)) {
                     start.play();
-                    game.setScreen(new ScreenManager(game, 1, -1, adNumber));
+                    game.setScreen(new ScreenManager(game, 1, -1, adNumber, adCaller));
                 }
             }
         }

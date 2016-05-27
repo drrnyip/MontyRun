@@ -11,12 +11,16 @@ public class MontyRun extends Game {
 	SpriteBatch batch;
 	public static final int V_WIDTH = 1280;
 	public static final int V_HEIGHT = 720;
+	AdCall adCall;
 
+	public MontyRun(AdCall handle){
+		this.adCall = handle;
+	}
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		setScreen(new ScreenManager(this, 0, -1, -1));
+		setScreen(new ScreenManager(this, 0, -1, -1, adCall));
 	}
 
 	@Override
