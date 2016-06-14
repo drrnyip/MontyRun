@@ -33,6 +33,7 @@ public class AndroidLauncher extends AndroidApplication implements AdCall{
 				if (mInterstitialAd.isLoaded()){
 					mInterstitialAd.show();
 				}
+				requestNewInterstitial();
 			}
 			else if (msg.what == 0)
 			{
@@ -65,12 +66,14 @@ public class AndroidLauncher extends AndroidApplication implements AdCall{
 		mInterstitialAd.setAdListener(new AdListener() {
 			@Override
 			public void onAdClosed() {
+				System.err.println("onadclosed called");
 				requestNewInterstitial();
 			}
 
 			@Override
 			public void onAdLoaded() {
 				if (mInterstitialAd.isLoaded() && show == true) {
+					System.err.println("onadloaded called");
 					mInterstitialAd.show();
 					show = false;
 				}
@@ -81,7 +84,6 @@ public class AndroidLauncher extends AndroidApplication implements AdCall{
 
 	private void requestNewInterstitial() {
 		adRequest = new AdRequest.Builder()
-				.addTestDevice("65D974177B7DD6F6CE05708C0E2507BD")
 				.build();
 		mInterstitialAd.loadAd(adRequest);
 	}

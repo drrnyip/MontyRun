@@ -173,8 +173,8 @@ public class PlayScreen implements Screen{
 
                 }
                 else {
-                    adNumber = 0;
                     game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
+                    adNumber = 0;
                     dispose();
 
                 }
@@ -198,8 +198,8 @@ public class PlayScreen implements Screen{
 
                 }
                 else {
-                    adNumber = 0;
                     game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
+                    adNumber = 0;
                     dispose();
 
                 }
@@ -216,7 +216,7 @@ public class PlayScreen implements Screen{
 
         //Flightbar render
         fbar.updateFlightTime(fbar, alien.getFlightTime());
-        game.batch.draw(fbar.getBar(fbar), gamecam.position.x - 50,background1.getHeight() - 215);
+        game.batch.draw(fbar.getBar(fbar), gamecam.position.x - 50,background1.getHeight() - 200);
 
 
         game.batch.end();
@@ -232,7 +232,7 @@ public class PlayScreen implements Screen{
 
     @Override
     public void resume() {
-
+        game.setScreen(new ScreenManager(game, 2, distance, adNumber, adCaller));
     }
 
     @Override

@@ -33,8 +33,9 @@ public class PlayAgain implements Screen {
     private FreeTypeFontGenerator.FreeTypeFontParameter fontParameter;
 
     //Sound
-    private Sound start;
     private Sound count;
+    private Sound newHighScore;
+    private boolean newHigh = false;
 
     private OrthographicCamera gamecam;
 
@@ -64,8 +65,8 @@ public class PlayAgain implements Screen {
         background = new Texture("bg4.png");
 
         //Sound
-        start = Gdx.audio.newSound(Gdx.files.internal("jingles_PIZZA10.ogg"));
         count = Gdx.audio.newSound(Gdx.files.internal("counter.mp3"));
+        newHighScore = Gdx.audio.newSound(Gdx.files.internal("jingles_SAX10.ogg"));
 
         //Font
         freeType = new FreeTypeFontGenerator(Gdx.files.internal("kenvector_future.ttf"));
@@ -83,6 +84,7 @@ public class PlayAgain implements Screen {
         highScore = prefs.getInt(ID1,0);
         if (score > highScore) {
             highScore = score;
+            newHighScore.play();
             prefs.putInt(ID1, highScore);
         }
 
@@ -110,7 +112,6 @@ public class PlayAgain implements Screen {
                 Vector2 tmp = new Vector2(Gdx.input.getX(), Gdx.input.getY());
                 Rectangle textureBounds = new Rectangle((game.V_WIDTH / 2 - playBtn.getWidth() / 2), (game.V_HEIGHT / 2 - playBtn.getHeight() / 2), playBtn.getWidth(), playBtn.getHeight());
                 if (textureBounds.contains(tmp.x, tmp.y)) {
-                    start.play();
                     game.setScreen(new ScreenManager(game, 1, -1, adNumber, adCaller));
                 }
             }
@@ -151,8 +152,8 @@ public class PlayAgain implements Screen {
     @Override
     public void dispose() {
         background.dispose();
+        newHighScore.dispose();
         playBtn.dispose();
-        start.dispose();
         font.dispose();
         freeType.dispose();
     }

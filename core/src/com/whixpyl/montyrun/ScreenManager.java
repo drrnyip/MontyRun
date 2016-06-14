@@ -32,7 +32,7 @@ public class ScreenManager implements Screen {
 
         showAd = false;
 
-        if (adNumber >= 10) {
+        if (adNumber >= 7) {
             showAd = true;
         }
 
